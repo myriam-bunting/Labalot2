@@ -29,22 +29,19 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
+          <a href="http://localhost:3000/data" className={styles.card}>
             <h2>Upload your Data</h2>
             <p>Easy to import your current excel spreadsheets and get going </p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
+          <a href="http://localhost:3000/cages" className={styles.card}>
             <h2> Manage your Colonies</h2>
             <p>
               Add, view and update your colonies, accessible from any location
             </p>
           </a>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
+          <a href="http://localhost:3000/experiments" className={styles.card}>
             <h2>Experiment Planning</h2>
             <p>Designate animals to research protocls and link sample data</p>
           </a>
@@ -60,7 +57,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://www.youtube.com/watch?v=rcqLjuHzkzU&ab_channel=Disney"
           target="_blank"
           rel="noopener noreferrer"
         >

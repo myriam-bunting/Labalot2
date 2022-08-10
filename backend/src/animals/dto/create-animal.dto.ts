@@ -6,4 +6,5 @@ export class CreateAnimalDto {
   phenotype?: string;
   experiment_id: number;
   culled_date: Date;
+  cage_name: string;
 }

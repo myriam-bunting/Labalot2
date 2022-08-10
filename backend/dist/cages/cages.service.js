@@ -20,7 +20,6 @@ let CagesService = class CagesService {
         return this.prisma.cages.create({
             data: {
                 name: createCageDto.name,
-                animal_id: createCageDto.animal_id,
                 experiment_id: createCageDto.experiment_id,
                 isBreeding: createCageDto.isBreeding,
             },
@@ -39,7 +38,6 @@ let CagesService = class CagesService {
             where: { id: id },
             data: {
                 name: updateCageDto.name,
-                animal_id: updateCageDto.animal_id,
                 experiment_id: updateCageDto.experiment_id,
                 isBreeding: updateCageDto.isBreeding,
             },

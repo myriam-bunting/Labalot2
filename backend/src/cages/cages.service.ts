@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateCageDto } from './dto/create-cage.dto';
 import { UpdateCageDto } from './dto/update-cage.dto';
 import { PrismaService } from 'src/prisma.service';
-import { cages, Prisma } from '@prisma/client';
 
 @Injectable()
 export class CagesService {
@@ -12,7 +11,6 @@ export class CagesService {
     return this.prisma.cages.create({
       data: {
         name: createCageDto.name,
-        animal_id: createCageDto.animal_id,
         experiment_id: createCageDto.experiment_id,
         isBreeding: createCageDto.isBreeding,
       },
@@ -34,7 +32,6 @@ export class CagesService {
       where: { id: id },
       data: {
         name: updateCageDto.name,
-        animal_id: updateCageDto.animal_id,
         experiment_id: updateCageDto.experiment_id,
         isBreeding: updateCageDto.isBreeding,
       },

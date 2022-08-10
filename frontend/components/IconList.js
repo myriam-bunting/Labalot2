@@ -19,6 +19,8 @@ function IconListItems() {
           component="h1"
           variant="h6"
           color="inherit"
+          paddingLeft={10}
+          display="-webkit-inline-flex"
           nowrap
           sx={
             {
@@ -43,6 +45,8 @@ function IconListItems() {
           variant="h6"
           color="inherit"
           nowrap
+          paddingLeft={5}
+          display="-webkit-inline-flex"
           sx={{
             displayPrint: "inline",
             // ...(open && { display: "display-outside", displayPrint: "inline" }),
@@ -65,11 +69,9 @@ function IconListItems() {
           variant="h6"
           color="inherit"
           nowrap
-          sx={
-            {
-              // ...(open && { display: "display-outside", displayPrint: "inline" }),
-            }
-          }
+          paddingLeft={5}
+          display="-webkit-inline-flex"
+          sx={{}}
         >
           Experiments
         </Typography>

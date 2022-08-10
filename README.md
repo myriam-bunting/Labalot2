@@ -8,8 +8,7 @@ Digital management tool designed with research facilities who manage small to me
 
 ## Project Planning:
 
-Day -1 - 0
-
+- Day -1 - 0
 - Define key problem, persona, research current available products
   DAY - 1
 - Development of user stories. Plan DB structure, App architcture, Views according to user stories
@@ -20,12 +19,18 @@ Day -1 - 0
     Day 3
 - Coding the thing
 
-  - Start on adding functionality to the frontend and connetion to the backend
+  - Start on adding functionality to the frontend and connection to the backend
 
 - Debugging
 - Hit functional MVP
 
 Install requirements:
--PRISMA
--Next.js
--Nest.js
+
+- PRISMA
+- Next.js
+- Nest.js
+- PostgreSQL
+
+Dependencies:
+
+- mui

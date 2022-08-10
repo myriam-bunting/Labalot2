@@ -21,7 +21,6 @@ import IconListItems, {
   mainListItems,
   secondaryListItems,
 } from "../components/IconList";
-// import { Table } from "@mui/material";
 // import Chart from "./Chart";
 import DataTable from "../components/AnimalsTable";
 import { fontSize } from "@mui/system";

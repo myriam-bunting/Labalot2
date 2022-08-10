@@ -16,13 +16,12 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 // import { mainListItems, secondaryListItems } from "./iconList";
 import IconListItems from "../components/IconList";
 import MenuIcon from "@mui/icons-material/Menu";
-import Badge from "@mui/material/Badge";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MuiAppBar from "@mui/material/AppBar";
 import AddIcon from "@mui/icons-material/Add";
-// import AppBar from "./appBar";
+import styles from "../styles/Home.module.css";
+import Image from "next/image";
+
 // import Chart from "./Chart";
-// import Orders from "./Orders";
 
 function Copyright(props) {
   return (
@@ -100,6 +99,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
+
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
@@ -141,7 +141,6 @@ function DashboardContent() {
               </Typography>
             </IconButton>
             <IconButton color="inherit">
-              {/* <Badge badgeContent={4} color="secondary"> */}
               <AddIcon />
               <Typography
                 component="h1"
@@ -152,7 +151,6 @@ function DashboardContent() {
               >
                 User
               </Typography>
-              {/* </Badge> */}
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -170,6 +168,15 @@ function DashboardContent() {
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
+          <a href="/">
+            <Image
+              src="/mouseIcon.png"
+              alt="mouse icon"
+              width={72}
+              height={34}
+            />
+          </a>
+          <Typography open={open}>Labalot</Typography>
           <Divider />
           <List component="nav">
             <IconListItems />
