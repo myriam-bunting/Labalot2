@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model animals {
+  id            Int       @id @default(autoincrement())
+  tag           Int?
+  genotype      String?   @db.VarChar
+  gender        String?   @db.VarChar
+  birth_date    DateTime? @db.Date
+  phenotype     String?   @db.VarChar
+  experiment_id Int?
+  culled_date   DateTime? @db.Date
+}
+
+model experiments {
+  id          Int       @id(map: "experiment_pkey") @default(autoincrement())
+  protocol_id String?   @db.VarChar
+  start_date  DateTime? @db.Date
+  end_date    DateTime? @db.Date
+  description String?   @default("NULL") @db.VarChar
+}
+
+model labs {
+  id        Int     @id @default(autoincrement())
+  name      String? @db.VarChar
+  user_id   Int?
+  PI        String? @db.VarChar
+  institute String? @db.VarChar
+}
+
+model rooms {
+  id      Int  @id @default(autoincrement())
+  user_id Int?
+}
+
+model users {
+  id            Int       @id @default(autoincrement())
+  name          String    @db.VarChar
+  email         String?   @db.VarChar
+  field         String?   @default("") @db.VarChar
+  postcode      String?   @db.VarChar
+  lab_id        Int
+  role          String?   @db.VarChar
+  register_date DateTime? @default(now()) @db.Date
+}
+
+model cages {
+  id            BigInt   @id(map: "cages1_pkey") @default(autoincrement())
+  name          String?  @db.VarChar
+  isBreeding    Boolean?
+  user_id       Int?
+  experiment_id Int?
+  animal_id     Int?
+}
+
+model protocols {
+  id            Int     @id @default(autoincrement())
+  name          String? @db.VarChar
+  experiment_id Int?
+  lab_id        Int?
+  user_id       Int?
+}
