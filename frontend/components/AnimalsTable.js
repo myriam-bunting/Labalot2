@@ -14,15 +14,6 @@ const columns = [
   { field: "genotype", headerName: "Genotype", width: 100 },
   { field: "phenotype", headerName: "Phenotype", width: 100 },
   { field: "experiment_id", headerName: "experiment_id", width: 80 },
-  //   {
-  //     field: "selected",
-  //     headerName: "",
-  //     description: "This column has a value getter and is not sortable.",
-  //     sortable: false,
-  //     width: 160,
-  //     valueGetter: (params) =>
-  //       `${params.row.id || ""} ${params.row.genotype || ""}`,
-  //   },
 ];
 
 const rows = [
@@ -83,6 +74,14 @@ const rows = [
 ];
 
 export default function DataTable() {
+  // let today = new Date();
+  // let birth_date = new Date(cageData.birth_date);
+  // console.log();
+
+  // function Age(startDate, endDate) {
+  //   const msInWeek = 1000 * 60 * 60 * 24 * 7;
+  //   return Math.round(Math.abs(endDate - startDate) / msInWeek);
+  // }
   return (
     <div style={{ height: "90vh", width: "90vw", paddingRight: 8 }}>
       <DataGrid

@@ -146,3 +146,12 @@
     filter: invert(1);
   }
 }
+.list {
+  /* font-weight: bold; */
+  list-style-type: none;
+}
+.list > li {
+  padding: 0.5em;
+  background-color: #cde6d6;
+  font-weight: lighter;
+}

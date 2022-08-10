@@ -1,102 +1,39 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Paper } from "@mui/material";
 
-export default function DataTable({ cageData }) {
-  const age = () => {
-    let today = new Date();
-    let birthDate = new Date(childData.birth_date);
-    const weeks = today.getFullYear() - birthDate.getFullYear();
-  };
-
+export default function CagesTable({ cageData }) {
   const columns = [
     { field: "id", headerName: "ID", width: 80 },
-    { field: "tag", headerName: "Tag", width: 80 },
-    { field: "gender", headerName: "Gender", width: 80 },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      width: 80,
-    },
-    { field: "genotype", headerName: "Genotype", width: 100 },
-    { field: "phenotype", headerName: "Phenotype", width: 100 },
-    { field: "experiment_id", headerName: "experiment_id", width: 80 },
+    { field: "name", headerName: "Name", width: 80 },
+    { field: "experiment_id", headerName: "Experiment", width: 80 },
   ];
 
-  // const rows = [
-  //   {
-  //     id: cageData.id,
-  //     tag: cageData.tag,
-  //     gender: cageData.gender,
-  //     age: cageData.age,
-  //     genotype: cageData.genotype,
-  //     phenotype: cageData.phenotype,
-  //     experiment_id: cageData.experiment_id,
-  //   }
-  // ]
-  const cageDataRow = cageData.map((cage) => {
-    <DataGrid>
-      (id = cage.id), (tag = cage.tag), (gender = cage.gender), (age =
-      cage.age), (genotype = cage.genotype), (phenotype = cage.phenotype),
-      (experiment_id = cage.experiment_id);
-    </DataGrid>;
-  });
+  const rows = [];
 
-  //   {
-  //     id: 1,
-  //     tag: "345",
-  //     gender: "female",
-  //     age: 8,
-  //     genotype: "APNKO",
-  //     phenotype: "mental degradation",
-  //     experiment_id: "54",
-  //   },
-  //   {
-  //     id: 2,
-  //     tag: "243",
-  //     gender: "male",
-  //     age: 16,
-  //     genotype: "APNKO",
-  //     phenotype: "mental degradation",
-  //     experiment_id: "24",
-  //   },
-  //   {
-  //     id: 3,
-  //     tag: "348",
-  //     gender: "female",
-  //     age: 8,
-  //     genotype: "APNKO/5XFAD",
-  //     phenotype: "none",
-  //     experiment_id: "54",
-  //   },
-  //   {
-  //     id: 4,
-  //     tag: "352",
-  //     gender: "male",
-  //     age: 12,
-  //     genotype: "APNKO/5XFAD",
-  //     phenotype: "none",
-  //     experiment_id: "NULL",
-  //   },
-  //   {
-  //     id: 5,
-  //     tag: "362",
-  //     gender: "male",
-  //     age: 13,
-  //     genotype: "5XFAD",
-  //     phenotype: "none",
-  //     experiment_id: "NULL",
-  //   },
-  // ];
+  console.log(cageData);
+
+  const cageDataRow = (cage, count) => {
+    count = 0;
+    for (cage of cageData) {
+      rows.push({
+        id: cage.id,
+        name: cage.name,
+        experiment_id: cage.experiment_id,
+      });
+      count += 1;
+      //add number of animals
+    }
+    console.log(`rows ${rows}, ${count}`);
+  };
+  cageDataRow();
 
   return (
     <div style={{ height: "90vh", width: "90vw", paddingRight: 8 }}>
       <DataGrid
-        rows={cageDataRow}
+        rows={rows}
         columns={columns}
-        pageSize={100}
-        rowsPerPageOptions={[100]}
+        pageSize={80}
+        rowsPerPageOptions={[10]}
         checkboxSelection
       />
     </div>

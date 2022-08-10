@@ -206,9 +206,10 @@ function DashboardContent() {
                     p: 2,
                     display: "flex",
                     flexDirection: "column",
-                    height: 240,
+                    height: 300,
                   }}
                 >
+                  My Colony Data
                   {/* <Chart /> */}
                 </Paper>
               </Grid>
@@ -219,14 +220,71 @@ function DashboardContent() {
                     p: 2,
                     display: "flex",
                     flexDirection: "column",
-                    height: 240,
+                    height: 300,
                   }}
-                ></Paper>
+                >
+                  <ul className={styles.list}>
+                    My Reminders:
+                    <Paper
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: 40,
+                        color: "#b61b80",
+                        padding: 1,
+                        marginY: 0.5,
+                        backgroundColor: "#cde6d6",
+                      }}
+                    >
+                      <li>Weaning</li>
+                    </Paper>{" "}
+                    <Paper
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: 40,
+                        color: "#b61b80",
+                        padding: 1,
+                        marginY: 0.5,
+                        backgroundColor: "#cde6d6",
+                      }}
+                    >
+                      <li>Breeding Setup</li>
+                    </Paper>{" "}
+                    <Paper
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: 40,
+                        color: "#b61b80",
+                        padding: 1,
+                        marginY: 0.5,
+                        backgroundColor: "#cde6d6",
+                      }}
+                    >
+                      <li>Genotyping</li>
+                    </Paper>{" "}
+                    <Paper
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: 40,
+                        color: "#b61b80",
+                        padding: 1,
+                        marginY: 0.5,
+                        backgroundColor: "#cde6d6",
+                      }}
+                    >
+                      <li>Protocol Ending</li>
+                    </Paper>{" "}
+                  </ul>
+                </Paper>
               </Grid>
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   {/* <Orders /> */}
+                  My Current Experiments
                 </Paper>
               </Grid>
             </Grid>
