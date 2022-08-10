@@ -95,7 +95,7 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -125,6 +125,29 @@ function DashboardContent() {
   //     setOpen(!openForm);
   //       };
   // ==============
+
+  // Fetch
+  const [animals, setAnimals] = useState([]);
+
+  useEffect(() => {
+    fetchAnimals();
+  }, []);
+
+  const fetchAnimals = async () => {
+    const url = "/api/animals";
+    const res = await fetch(url, {
+      method: "GET",
+    });
+    console.log(res);
+
+    const animalData = await res.json();
+
+    console.log(res.status);
+    console.log(animalData);
+
+    setCages(animalData);
+    //passing cage data down in the state
+  };
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -158,6 +181,7 @@ function DashboardContent() {
               sx={{ flexGrow: 1 }}
             >
               Animals
+              {/* Pass tab state */}
             </Typography>
             <IconButton color="inherit" onClick={toggleCageModal} type="Cage">
               <AddIcon />
