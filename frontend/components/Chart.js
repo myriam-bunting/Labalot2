@@ -114,7 +114,8 @@ export default function DisplayChart() {
 
     return (
       <div className="doughnut" id="doughnut">
-        <Doughnut />
+        {/* <Doughnut /> */}
+        {myChart}
       </div>
       // </div>
     );

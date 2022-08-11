@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DataGrid, GridRow } from "@mui/x-data-grid";
 
-export default function CagesTable({ cageData }) {
+export default function CagesTable({ cageData, handleSelectModelChange }) {
   const columns = [
     { field: "id", headerName: "ID", width: 150 },
     { field: "name", headerName: "Name", width: 150 },
@@ -26,16 +26,7 @@ export default function CagesTable({ cageData }) {
 
   cageDataRow(cageData);
   // =================== Retrieving selected fields (for Update /Delete)
-  const selectedRowData = rows.filter((row) =>
-    selectedIDs.has(row.id.toString())
-  );
-  const selectedIDs = (ids) => {
-    const selectedIDs = new Set(ids);
-    const selectedRowData = rows.filter((row) =>
-      selectedIDs.has(row.id.toString())
-    );
-    console.log(selectedRowData);
-  };
+  console.log();
   // ===================
 
   return (
@@ -45,8 +36,7 @@ export default function CagesTable({ cageData }) {
         columns={columns}
         pageSize={80}
         rowsPerPageOptions={[10]}
-        checkboxSelection
-        onSelectionModelChange={selectedIDs}
+        onSelectionModelChange={handleSelectModelChange}
       />
     </div>
   );

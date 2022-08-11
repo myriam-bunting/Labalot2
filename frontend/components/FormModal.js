@@ -26,7 +26,7 @@ export default function FormDialog(props) {
         <DialogTitle>New {props.type}</DialogTitle>
         <DialogContent>
           <DialogContentText>Enter new {props.type} details:</DialogContentText>
-          <Update></Update>
+          <UpdateCage></UpdateCage>
         </DialogContent>
         <DialogActions>
           <Button onClick={props.onClose}>Cancel</Button>

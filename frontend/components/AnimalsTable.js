@@ -116,7 +116,6 @@ export default function DataTable({ animalData }) {
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[100]}
-        checkboxSelection
       />
     </div>
   );

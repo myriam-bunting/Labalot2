@@ -6,11 +6,6 @@ import { Checkbox, Button } from "@mui/material";
 
 export default function NewCage(props) {
   const [checked, setChecked] = React.useState(false);
-
-  // +++++++++++++++
-  const [cageName, setCageName] = React.useState(false);
-  // ++++++++++++++++
-
   const [submit, setSubmit] = React.useState(false);
 
   const nameRef = React.useRef();
@@ -35,10 +30,7 @@ export default function NewCage(props) {
       body: JSON.stringify(cageData),
       headers: { "content-type": "application/json" },
     });
-    // console.log(res);
     const newCageData = await res.json();
-    // console.log(res.status);
-    // console.log(newCageData);
   };
 
   const handleSubmit = async (event) => {

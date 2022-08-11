@@ -2,7 +2,7 @@ import React from "react";
 import SensorDoorIcon from "@mui/icons-material/SensorDoor";
 import HomeIcon from "@mui/icons-material/Home";
 import BiotechIcon from "@mui/icons-material/Biotech";
-import { Typography, IconButton } from "@mui/material";
+import { Typography, IconButton, SvgIcon } from "@mui/material";
 
 function IconListItems() {
   return (
@@ -22,11 +22,11 @@ function IconListItems() {
           paddingLeft={10}
           display="-webkit-inline-flex"
           nowrap
-          sx={
-            {
-              // ...(!open && { display: "hidden" }),
-            }
-          }
+          // sx={
+          //   {
+          //     // ...(!open && { display: "hidden" }),
+          //   }
+          // }
         >
           Home
         </Typography>
@@ -37,6 +37,7 @@ function IconListItems() {
             marginRight: "36px",
             color: "#1b97b6",
           }}
+          // onClick={"pages/dashboard"}
         >
           <SensorDoorIcon />
         </IconButton>

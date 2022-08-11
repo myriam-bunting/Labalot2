@@ -46,7 +46,7 @@ export default function Home() {
             <p>Designate animals to research protocls and link sample data</p>
           </a>
 
-          <a href="http://localhost:3000/dashboard" className={styles.card}>
+          <a href="http://localhost:3000/animals" className={styles.card}>
             <h2>Share your Info</h2>
             <p>
               Colony details are shown on a dashboard. Easy to share and plan
