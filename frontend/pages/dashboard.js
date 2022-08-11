@@ -164,19 +164,25 @@ function DashboardContent() {
               px: [1],
             }}
           >
+            <Typography
+              sx={{ component: "h1", variant: "h3", color: "inherit" }}
+              open={open}
+            >
+              Labalot
+            </Typography>
+            <a href="/">
+              <Image
+                src="/mouseIcon.png"
+                alt="mouse icon"
+                width={72}
+                height={34}
+              />
+            </a>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
-          <a href="/">
-            <Image
-              src="/mouseIcon.png"
-              alt="mouse icon"
-              width={72}
-              height={34}
-            />
-          </a>
-          <Typography open={open}>Labalot</Typography>
+
           <Divider />
           <List component="nav">
             <IconListItems />

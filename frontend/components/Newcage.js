@@ -20,11 +20,11 @@ export default function NewCage(props) {
   const birthDateRef = React.useRef();
 
   const handleCheck = () => {
-    if (!checkbox) {
+    if (checked) {
       //update isBreeding to false is not checked
       isBreeding = false;
     }
-    //updtae isBreeeding to true if checked
+    //update isBreeeding to true if checked
     isBreeding = true;
   };
 
@@ -39,6 +39,7 @@ export default function NewCage(props) {
       // isBreeding: { checked },
       // Adding state of breeding cage
     };
+
     const animalData = {
       tag: tagRef.current.value,
       gender: genderRef.current.value,
@@ -46,6 +47,24 @@ export default function NewCage(props) {
       phenotype: phenotypeRef.current.value,
       birthDate: birthDateRef.current.value,
       experimentId: experimentIdRef.current.value,
+    };
+
+    const newCage = async () => {
+      const url = "http://localhost:4000/cages";
+      const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(cageData),
+        headers: { "content-type": "application/json" },
+      });
+      console.log(res);
+
+      const newCageData = await res.json();
+
+      console.log(res.status);
+      console.log(newCageData);
+
+      setAnimals(newCageData);
+      //passing cage data down in the state
     };
 
     if (

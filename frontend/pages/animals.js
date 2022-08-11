@@ -23,6 +23,7 @@ import IconListItems, {
 } from "../components/IconList";
 // import Chart from "./Chart";
 import DataTable from "../components/AnimalsTable";
+import Image from "next/image";
 
 import NewCage from "../components/NewCage";
 import FormDialog from "../components/formModal";
@@ -117,10 +118,25 @@ function DashboardContent() {
   // Fetch
   const [viewAnimals, setViewAnimals] = React.useState(true);
   const [animals, setAnimals] = React.useState([]);
+  const [viewCages, setViewCages] = React.useState(false);
+
+  const handleViewCages = () => {
+    setViewCages(!viewCages);
+    setViewAnimals(false);
+    console.log(`show me those cages baby`);
+  };
+  const handleViewAnimals = () => {
+    setViewAnimals(true);
+    console.log(`animals updated`);
+  };
 
   React.useEffect(() => {
     fetchAnimals();
   }, []);
+
+  // React.useEffect(() => {
+  //   setAnimals(false);
+  // }, [viewCages]);
 
   const fetchAnimals = async () => {
     const url = "http://localhost:4000/animals";
@@ -136,15 +152,6 @@ function DashboardContent() {
 
     setAnimals(animalData);
     //passing cage data down in the state
-  };
-
-  const [viewCages, setViewCages] = React.useState(false);
-
-  const handleViewCages = () => {
-    setViewCages(true);
-  };
-  const toggleAnimals = () => {
-    setViewAnimals(!viewAnimals);
   };
 
   return (
@@ -170,8 +177,9 @@ function DashboardContent() {
               }}
             >
               <MenuIcon />
+              {/* Animals TAB */}
             </IconButton>
-            <IconButton onClick={toggleAnimals}>
+            <IconButton onClick={handleViewAnimals}>
               <Typography
                 component="h1"
                 variant="h6"
@@ -182,6 +190,8 @@ function DashboardContent() {
                 Animals
               </Typography>
             </IconButton>
+
+            {/* Cages TAB */}
             <IconButton onClick={handleViewCages}>
               <Typography
                 component="h1"
@@ -234,6 +244,20 @@ function DashboardContent() {
               px: [1],
             }}
           >
+            <Typography
+              sx={{ component: "h1", variant: "h3", color: "inherit" }}
+              open={open}
+            >
+              Labalot
+            </Typography>
+            <a href="/">
+              <Image
+                src="/mouseIcon.png"
+                alt="mouse icon"
+                width={72}
+                height={34}
+              />
+            </a>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
@@ -275,18 +299,9 @@ function DashboardContent() {
               )}
             </Box>
             <Grid container spacing={3}>
-              {/* Chart */}
               <Grid item sm={12} md={8} lg={9}>
-                {/* <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 240,
-                  }}
-                > */}
                 {/* <Chart /> */}
-                {animals && <DataTable animalData={animals} />}
+                {viewAnimals && <DataTable animalData={animals} />}
                 {viewCages && <Cages />}
               </Grid>
             </Grid>
