@@ -13,7 +13,6 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-// import { mainListItems, secondaryListItems } from "./iconList";
 import IconListItems from "../components/IconList";
 import MenuIcon from "@mui/icons-material/Menu";
 import MuiAppBar from "@mui/material/AppBar";
@@ -21,7 +20,7 @@ import AddIcon from "@mui/icons-material/Add";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
-// import Chart from "./Chart";
+import DisplayChart from "../components/Chart";
 
 function Copyright(props) {
   return (
@@ -205,18 +204,17 @@ function DashboardContent() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper
                   sx={{
                     p: 2,
                     display: "flex",
                     flexDirection: "column",
-                    height: 300,
+                    height: 400,
                   }}
                 >
                   My Colony Data
-                  {/* <Chart /> */}
+                  <DisplayChart />
                 </Paper>
               </Grid>
 
@@ -278,7 +276,7 @@ function DashboardContent() {
                         color: "#b61b80",
                         padding: 1,
                         marginY: 0.5,
-                        backgroundColor: "#cde6d6",
+                        backgroundColor: "#f5f5dc",
                       }}
                     >
                       <li>Protocol Ending</li>

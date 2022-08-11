@@ -3,9 +3,10 @@ import { DataGrid, GridRow } from "@mui/x-data-grid";
 
 export default function CagesTable({ cageData }) {
   const columns = [
-    { field: "id", headerName: "ID", width: 80 },
-    { field: "name", headerName: "Name", width: 80 },
-    { field: "experiment_id", headerName: "Experiment", width: 80 },
+    { field: "id", headerName: "ID", width: 150 },
+    { field: "name", headerName: "Name", width: 150 },
+    { field: "experiment_id", headerName: "Experiment", width: 150 },
+    { field: "isBreeding", headerName: "Breeding", width: 150 },
   ];
 
   const rows = [];
@@ -16,18 +17,26 @@ export default function CagesTable({ cageData }) {
         id: cage.id,
         name: cage.name,
         experiment_id: cage.experiment_id,
+        isBreeding: cage.isBreeding,
       });
 
       //add number of animals
     }
-    console.log(`rows ${rows}`);
   };
+
   cageDataRow(cageData);
-  //add number of animals
-
-  console.log(`rows ${rows}`);
-
-  // cageDataRow();
+  // =================== Retrieving selected fields (for Update /Delete)
+  const selectedRowData = rows.filter((row) =>
+    selectedIDs.has(row.id.toString())
+  );
+  const selectedIDs = (ids) => {
+    const selectedIDs = new Set(ids);
+    const selectedRowData = rows.filter((row) =>
+      selectedIDs.has(row.id.toString())
+    );
+    console.log(selectedRowData);
+  };
+  // ===================
 
   return (
     <div style={{ height: "90vh", width: "90vw", paddingRight: 8 }}>
@@ -37,6 +46,7 @@ export default function CagesTable({ cageData }) {
         pageSize={80}
         rowsPerPageOptions={[10]}
         checkboxSelection
+        onSelectionModelChange={selectedIDs}
       />
     </div>
   );

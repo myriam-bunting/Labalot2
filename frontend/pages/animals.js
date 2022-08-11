@@ -115,7 +115,7 @@ function DashboardContent() {
     console.log(`modal state changed`);
   };
 
-  // Fetch
+  // ================ Read : Fetch all animals
   const [viewAnimals, setViewAnimals] = React.useState(true);
   const [animals, setAnimals] = React.useState([]);
   const [viewCages, setViewCages] = React.useState(false);
@@ -133,10 +133,6 @@ function DashboardContent() {
   React.useEffect(() => {
     fetchAnimals();
   }, []);
-
-  // React.useEffect(() => {
-  //   setAnimals(false);
-  // }, [viewCages]);
 
   const fetchAnimals = async () => {
     const url = "http://localhost:4000/animals";

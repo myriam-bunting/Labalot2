@@ -73,15 +73,42 @@ const rows = [
   },
 ];
 
-export default function DataTable() {
-  // let today = new Date();
-  // let birth_date = new Date(cageData.birth_date);
-  // console.log();
+export default function DataTable({ animalData }) {
+  let today = new Date();
+  let birth_date = new Date(animalData.birth_date);
+  console.log(animalData.birth_date);
 
-  // function Age(startDate, endDate) {
-  //   const msInWeek = 1000 * 60 * 60 * 24 * 7;
-  //   return Math.round(Math.abs(endDate - startDate) / msInWeek);
-  // }
+  const Age = (startDate, endDate) => {
+    const msInWeek = 1000 * 60 * 60 * 24 * 7;
+    return Math.round(Math.abs(endDate - startDate) / msInWeek);
+  };
+  for (const animal in animalData) {
+    Age(animal.birth_date, today);
+  }
+  console.log(Age);
+
+  const rows = [];
+
+  const animalDataRow = (animals) => {
+    for (const animal of animals) {
+      rows.push({
+        id: animal.id,
+        tag: animal.tag,
+        gender: animal.gender,
+        age: Age,
+        genotype: animal.genotype,
+        phenotype: animal.phenotype,
+        experiment_id: animal.experiment_id,
+      });
+
+      //add number of animals
+    }
+    console.log(`rows ${rows}`);
+  };
+  animalDataRow(animalData);
+
+  console.log(`rows ${rows}`);
+
   return (
     <div style={{ height: "90vh", width: "90vw", paddingRight: 8 }}>
       <DataGrid

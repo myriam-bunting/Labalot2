@@ -6,82 +6,52 @@ import { Checkbox, Button } from "@mui/material";
 
 export default function NewCage(props) {
   const [checked, setChecked] = React.useState(false);
+
+  // +++++++++++++++
+  const [cageName, setCageName] = React.useState(false);
+  // ++++++++++++++++
+
   const [submit, setSubmit] = React.useState(false);
 
-  const cageIdRef = React.useRef();
   const nameRef = React.useRef();
   const experimentIdRef = React.useRef();
-  const animalNumberRef = React.useRef();
 
-  const tagRef = React.useRef();
-  const genderRef = React.useRef();
-  const genotypeRef = React.useRef();
-  const phenotypeRef = React.useRef();
-  const birthDateRef = React.useRef();
+  // ========ANIMAL
+  // const tagRef = React.useRef();
+  // const genderRef = React.useRef();
+  // const genotypeRef = React.useRef();
+  // const phenotypeRef = React.useRef();
+  // const birthDateRef = React.useRef();
 
-  const handleCheck = () => {
-    if (checked) {
-      //update isBreeding to false is not checked
-      isBreeding = false;
-    }
-    //update isBreeeding to true if checked
-    isBreeding = true;
+  const handleCheck = (checked) => {
+    setChecked(checked);
+  };
+
+  // ================ Create : Add new cage ======
+  const addNewCage = async (cageData) => {
+    const url = "http://localhost:4000/cages";
+    const res = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(cageData),
+      headers: { "content-type": "application/json" },
+    });
+    // console.log(res);
+    const newCageData = await res.json();
+    // console.log(res.status);
+    // console.log(newCageData);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     //on Submit, data is passed to the database
     const cageData = {
-      cageId: cageIdRef.current.value,
-      cageName: nameRef.current.value,
-      experimentId: experimentIdRef.current.value,
-      animalNumber: animalNumberRef.current.value,
-      // isBreeding: { checked },
-      // Adding state of breeding cage
+      name: nameRef.current.value,
+      experiment_id: Number(experimentIdRef.current.value),
+      isBreeding: checked,
     };
+    // console.log(cageData);
+    addNewCage(cageData);
 
-    const animalData = {
-      tag: tagRef.current.value,
-      gender: genderRef.current.value,
-      genotype: genotypeRef.current.value,
-      phenotype: phenotypeRef.current.value,
-      birthDate: birthDateRef.current.value,
-      experimentId: experimentIdRef.current.value,
-    };
-
-    const newCage = async () => {
-      const url = "http://localhost:4000/cages";
-      const res = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(cageData),
-        headers: { "content-type": "application/json" },
-      });
-      console.log(res);
-
-      const newCageData = await res.json();
-
-      console.log(res.status);
-      console.log(newCageData);
-
-      setAnimals(newCageData);
-      //passing cage data down in the state
-    };
-
-    if (
-      animalNumberRef.current.value === "" ||
-      animalNumberRef.current.value <= 0
-    ) {
-      return alert(`Error! Please ensure "Date" field is filled in`);
-    }
-    console.log("animals are inside");
-
-    const url = "/users/newcage";
-    const res = await fetch(url, {
-      method: "PUT",
-      body: JSON.stringify(cageData),
-      headers: { "content-type": "application/json" },
-    });
-    console.log("animals sent");
     setSubmit(true);
   };
 
@@ -96,42 +66,24 @@ export default function NewCage(props) {
     >
       <div>
         <Typography>Add a new cage: </Typography>
-        <TextField
-          disabled
-          id="outlined-disabled"
-          label="Cage ID"
-          // defaultValue={props.cage_id}
-          variant="outlined"
-          ref={cageIdRef}
-        />
+
         <TextField
           id="outlined-cageName"
-          label="Cage name"
-          // defaultValue={props.cage_id}
-          ref={nameRef}
+          label="Cage Name"
+          inputRef={nameRef}
         />
         <TextField
           id="outlined-experiementID"
           label="Experiment ID"
-          ref={experimentIdRef}
+          inputRef={experimentIdRef}
         />
-        <TextField
-          id="outlined-number"
-          label="Number of animals"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          ref={animalNumberRef}
-        />
-        <TextField id="outlined-search" label="Search field" type="search" />
 
         <FormGroup>
           <FormControlLabel
             control={
               <Checkbox
                 defaultChecked
-                checkbox={checked}
+                checkbox={!checked}
                 onChange={handleCheck}
               />
             }
