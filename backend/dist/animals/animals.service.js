@@ -26,7 +26,6 @@ let AnimalsService = class AnimalsService {
                 phenotype: createAnimalDto.phenotype,
                 experiment_id: createAnimalDto.experiment_id,
                 culled_date: createAnimalDto.culled_date,
-                cage_name: createAnimalDto.cage_name,
             },
         });
     }

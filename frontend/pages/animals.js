@@ -27,6 +27,7 @@ import DataTable from "../components/AnimalsTable";
 import NewCage from "../components/NewCage";
 import FormDialog from "../components/formModal";
 import NewAnimal from "../components/NewAnimal";
+import Cages from "./cages";
 
 function Copyright(props) {
   return (
@@ -113,20 +114,8 @@ function DashboardContent() {
     console.log(`modal state changed`);
   };
 
-  // ========== openForm
-  const [openForm, setOpenForm] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpenForm(true);
-  };
-  const handleClickClose = () => {
-    setOpenForm(false);
-  };
-  //   const toggleForm = () => {
-  //     setOpen(!openForm);
-  //       };
-  // ==============
-
   // Fetch
+  const [viewAnimals, setViewAnimals] = React.useState(true);
   const [animals, setAnimals] = React.useState([]);
 
   React.useEffect(() => {
@@ -134,7 +123,7 @@ function DashboardContent() {
   }, []);
 
   const fetchAnimals = async () => {
-    const url = "/api/animals";
+    const url = "http://localhost:4000/animals";
     const res = await fetch(url, {
       method: "GET",
     });
@@ -149,6 +138,15 @@ function DashboardContent() {
     //passing cage data down in the state
   };
 
+  const [viewCages, setViewCages] = React.useState(false);
+
+  const handleViewCages = () => {
+    setViewCages(true);
+  };
+  const toggleAnimals = () => {
+    setViewAnimals(!viewAnimals);
+  };
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
@@ -158,7 +156,7 @@ function DashboardContent() {
           <Toolbar
             sx={{
               backgroundColor: "#1b97b6",
-              pr: "24px", // keep right padding when drawer closed
+              pr: "24px",
             }}
           >
             <IconButton
@@ -173,16 +171,28 @@ function DashboardContent() {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Animals
-              {/* Pass tab state */}
-            </Typography>
+            <IconButton onClick={toggleAnimals}>
+              <Typography
+                component="h1"
+                variant="h6"
+                color="inherit"
+                noWrap
+                sx={{ flexGrow: 1 }}
+              >
+                Animals
+              </Typography>
+            </IconButton>
+            <IconButton onClick={handleViewCages}>
+              <Typography
+                component="h1"
+                variant="h6"
+                color="inherit"
+                noWrap
+                sx={{ flexGrow: 1 }}
+              >
+                Cages
+              </Typography>
+            </IconButton>
             <IconButton color="inherit" onClick={toggleCageModal} type="Cage">
               <AddIcon />
               <Typography
@@ -276,10 +286,9 @@ function DashboardContent() {
                   }}
                 > */}
                 {/* <Chart /> */}
-                {animals && <DataTable type={animal} />}
-                {/* </Paper> */}
+                {animals && <DataTable animalData={animals} />}
+                {viewCages && <Cages />}
               </Grid>
-              {/* Recent Deposits */}
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>

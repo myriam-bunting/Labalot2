@@ -4,12 +4,8 @@ import CagesTable from "../components/CagesTable";
 function Cages() {
   const [cages, setCages] = useState([]);
 
-  useEffect(() => {
-    fetchCages();
-  }, []);
-
   const fetchCages = async () => {
-    const url = "/api/cages";
+    const url = "http://localhost:4000/cages";
     const res = await fetch(url, {
       method: "GET",
     });
@@ -24,11 +20,11 @@ function Cages() {
     //passing cage data down in the state
   };
 
-  return (
-    <div>
-      {cages && <CagesTable cageData={cages} type={cages}></CagesTable>}
-    </div>
-  );
+  useEffect(() => {
+    fetchCages();
+  }, []);
+
+  return <div>{cages && <CagesTable cageData={cages}></CagesTable>}</div>;
 }
 
 export default Cages;

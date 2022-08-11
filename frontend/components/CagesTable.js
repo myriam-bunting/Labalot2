@@ -1,7 +1,7 @@
 import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridRow } from "@mui/x-data-grid";
 
-export default function CagesTable({ cageData, type }) {
+export default function CagesTable({ cageData }) {
   const columns = [
     { field: "id", headerName: "ID", width: 80 },
     { field: "name", headerName: "Name", width: 80 },
@@ -10,22 +10,24 @@ export default function CagesTable({ cageData, type }) {
 
   const rows = [];
 
-  console.log(cageData);
-
-  const cageDataRow = (cage, count) => {
-    count = 0;
-    for (cage of cageData) {
+  const cageDataRow = (cages) => {
+    for (const cage of cages) {
       rows.push({
         id: cage.id,
         name: cage.name,
         experiment_id: cage.experiment_id,
       });
-      count += 1;
+
       //add number of animals
     }
-    console.log(`rows ${rows}, ${count}`);
+    console.log(`rows ${rows}`);
   };
-  cageDataRow();
+  cageDataRow(cageData);
+  //add number of animals
+
+  console.log(`rows ${rows}`);
+
+  // cageDataRow();
 
   return (
     <div style={{ height: "90vh", width: "90vw", paddingRight: 8 }}>
