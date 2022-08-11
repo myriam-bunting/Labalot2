@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
-export default function CagesTable({ cageData }) {
+export default function CagesTable({ cageData, type }) {
   const columns = [
     { field: "id", headerName: "ID", width: 80 },
     { field: "name", headerName: "Name", width: 80 },

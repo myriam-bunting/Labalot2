@@ -24,7 +24,11 @@ function Cages() {
     //passing cage data down in the state
   };
 
-  return <div>{cages && <CagesTable cageData={cages}></CagesTable>}</div>;
+  return (
+    <div>
+      {cages && <CagesTable cageData={cages} type={cages}></CagesTable>}
+    </div>
+  );
 }
 
 export default Cages;

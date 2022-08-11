@@ -23,7 +23,7 @@ import IconListItems, {
 } from "../components/IconList";
 // import Chart from "./Chart";
 import DataTable from "../components/AnimalsTable";
-import { fontSize } from "@mui/system";
+
 import NewCage from "../components/NewCage";
 import FormDialog from "../components/formModal";
 import NewAnimal from "../components/NewAnimal";
@@ -127,9 +127,9 @@ function DashboardContent() {
   // ==============
 
   // Fetch
-  const [animals, setAnimals] = useState([]);
+  const [animals, setAnimals] = React.useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchAnimals();
   }, []);
 
@@ -145,7 +145,7 @@ function DashboardContent() {
     console.log(res.status);
     console.log(animalData);
 
-    setCages(animalData);
+    setAnimals(animalData);
     //passing cage data down in the state
   };
 
@@ -276,7 +276,7 @@ function DashboardContent() {
                   }}
                 > */}
                 {/* <Chart /> */}
-                <DataTable />
+                {animals && <DataTable type={animal} />}
                 {/* </Paper> */}
               </Grid>
               {/* Recent Deposits */}

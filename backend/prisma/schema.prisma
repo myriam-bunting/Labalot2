@@ -16,8 +16,8 @@ model animals {
   phenotype     String?   @db.VarChar
   experiment_id Int?
   culled_date   DateTime? @db.Date
-  cage_id       Int?
   cage_name     String?
+  cage_id       Int?
 }
 
 model experiments {
@@ -53,12 +53,12 @@ model users {
 }
 
 model cages {
-  id            Int   @id(map: "cages_pkey") @default(autoincrement())
+  id            BigInt   @id(map: "cages1_pkey") @default(autoincrement())
   name          String?  @db.VarChar
   isBreeding    Boolean?
   user_id       Int?
   experiment_id Int?
-
+  animal_id     Int?
 }
 
 model protocols {
