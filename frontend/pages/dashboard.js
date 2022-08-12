@@ -22,6 +22,8 @@ import Image from "next/image";
 
 import DisplayChart from "../components/Chart";
 
+import Experiments from "../components/Experiments";
+
 function Copyright(props) {
   return (
     <Typography
@@ -284,11 +286,11 @@ function DashboardContent() {
                   </ul>
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
+
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  {/* <Orders /> */}
                   My Current Experiments
+                  <Experiments />
                 </Paper>
               </Grid>
             </Grid>

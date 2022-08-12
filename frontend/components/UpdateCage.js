@@ -5,6 +5,7 @@ function UpdateCage(props) {
   const nameRef = useRef();
   const experimentIdRef = useRef();
   console.log(props.cageData);
+
   // ============ Update: Cage ========
 
   const updateCage = async (updatedCageData) => {

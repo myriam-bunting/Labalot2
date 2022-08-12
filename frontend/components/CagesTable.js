@@ -1,5 +1,5 @@
 import * as React from "react";
-import { DataGrid, GridRow } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 
 export default function CagesTable({ cageData, handleSelectModelChange }) {
   const columns = [
@@ -25,9 +25,6 @@ export default function CagesTable({ cageData, handleSelectModelChange }) {
   };
 
   cageDataRow(cageData);
-  // =================== Retrieving selected fields (for Update /Delete)
-  console.log();
-  // ===================
 
   return (
     <div style={{ height: "90vh", width: "90vw", paddingRight: 8 }}>

@@ -2,42 +2,44 @@ import React from "react";
 import SensorDoorIcon from "@mui/icons-material/SensorDoor";
 import HomeIcon from "@mui/icons-material/Home";
 import BiotechIcon from "@mui/icons-material/Biotech";
-import { Typography, IconButton, SvgIcon } from "@mui/material";
+import { Typography, IconButton, Link } from "@mui/material";
 
 function IconListItems() {
   return (
     <div className="styles.iconlist">
       <div>
-        <IconButton
-          sx={{
-            color: "#1b97b6",
-          }}
-        >
-          <HomeIcon />
-        </IconButton>
-        <Typography
-          component="h1"
-          variant="h6"
-          color="inherit"
-          paddingLeft={10}
-          display="-webkit-inline-flex"
-          nowrap
-          // sx={
-          //   {
-          //     // ...(!open && { display: "hidden" }),
-          //   }
-          // }
-        >
-          Home
-        </Typography>
+        <Link href="/dashboard">
+          <IconButton
+            sx={{
+              color: "#1b97b6",
+            }}
+          >
+            <HomeIcon />
+          </IconButton>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            paddingLeft={10}
+            display="-webkit-inline-flex"
+            nowrap
+            // sx={
+            //   {
+            //     // ...(!open && { display: "hidden" }),
+            //   }
+            // }
+          >
+            Home
+          </Typography>
+        </Link>
       </div>
+
       <div>
         <IconButton
           sx={{
             marginRight: "36px",
             color: "#1b97b6",
           }}
-          // onClick={"pages/dashboard"}
         >
           <SensorDoorIcon />
         </IconButton>

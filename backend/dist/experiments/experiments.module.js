@@ -16,7 +16,7 @@ let ExperimentsModule = class ExperimentsModule {
 ExperimentsModule = __decorate([
     (0, common_1.Module)({
         controllers: [experiments_controller_1.ExperimentsController],
-        providers: [experiments_service_1.ExperimentsService, prisma_service_1.PrismaService]
+        providers: [experiments_service_1.ExperimentsService, prisma_service_1.PrismaService],
     })
 ], ExperimentsModule);
 exports.ExperimentsModule = ExperimentsModule;

@@ -139,7 +139,6 @@ function DashboardContent({ children }) {
               }}
             >
               <MenuIcon />
-              {/* Animals TAB */}
             </IconButton>
             <Link href="/animals">
               <IconButton>
@@ -266,7 +265,6 @@ function DashboardContent({ children }) {
             </Box>
             <Grid container spacing={3}>
               <Grid item sm={12} md={8} lg={9}>
-                {/* <Chart /> */}
                 {children}
               </Grid>
             </Grid>

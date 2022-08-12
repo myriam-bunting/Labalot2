@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Chart } from "react-chartjs-2";
-import { ArcElement } from "chart.js";
+import React from "react";
+import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
 
-export default function DisplayChart() {
+function Chart(props) {
   const animalSeedData = [
     {
       id: 6,
@@ -69,55 +68,39 @@ export default function DisplayChart() {
     "purple",
     "#ef3935",
   ];
-  const xValues = Object.keys(animalSeedData[0]);
-  console.log(xValues);
+  // const keys = Object.keys(animalSeedData);
 
-  const data = [];
-  const yValues = () => {
-    for (const item of animalSeedData) {
-      data.push(item.genotype);
-    }
+  const xValues = animalSeedData.map((data) => {
+    return data.genotype;
+  });
+  console.log(`THESE ARE MY ${keys}`);
+  const counts = {};
+  const sampleArray = ["a", "a", "b", "c"];
 
-    console.log(yValues);
+  const yValues = sampleArray.forEach(function (x) {
+    counts[x] = (counts[x] || 0) + 1;
+  });
+  console.log(counts);
 
-    //============ Chart
-
-    const myChart = new Chart(ctx, {
-      type: "doughnut",
-      data: {
-        labels: ["APNKO", "5XFAD", "APN/5XFAD", "tbc"],
-        datasets: [
-          {
-            label: "genotype",
-            data: [20, 15, 2, 50],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.5)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-            ],
-            borderColor: [
-              "rgba(255,99,132,1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-            ],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        cutoutPercentage: 40,
-        responsive: false,
-      },
-    });
-
-    return (
-      <div className="doughnut" id="doughnut">
-        {/* <Doughnut /> */}
-        {myChart}
-      </div>
-      // </div>
-    );
-  };
+  return (
+    <div>
+      <Doughnut
+        data={{
+          labels: [30, 40, 20, 10],
+          datasets: [
+            {
+              label: "Genotype Summary",
+              backgroundColor: barColors,
+              data: yValues,
+              hoverOffset: 4,
+            },
+          ],
+        }}
+        options={[{ legend: { display: false } }]}
+      />
+    </div>
+    // </div>
+  );
 }
+
+export default Chart;
