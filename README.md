@@ -8,9 +8,9 @@ Digital management tool designed with research facilities who manage small to me
 
 ## Project Planning:
 
-- Day -1 - 0
+- Day -0
 - Define key problem, persona, research current available products
-  DAY - 1
+  DAY 1
 - Development of user stories. Plan DB structure, App architcture, Views according to user stories
   Day 2
 - Coding the thing
@@ -33,4 +33,4 @@ Install requirements:
 
 Dependencies:
 
-- mui
+- material UI 
