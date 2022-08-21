@@ -6,7 +6,7 @@ import { Typography, IconButton, Link } from "@mui/material";
 
 function IconListItems() {
   return (
-    <div className="styles.iconlist">
+    <div>
       <div>
         <Link href="/dashboard">
           <IconButton
@@ -23,11 +23,6 @@ function IconListItems() {
             paddingLeft={10}
             display="-webkit-inline-flex"
             nowrap
-            // sx={
-            //   {
-            //     // ...(!open && { display: "hidden" }),
-            //   }
-            // }
           >
             Home
           </Typography>

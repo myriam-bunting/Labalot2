@@ -33,8 +33,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        Labalot
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -129,8 +129,7 @@ function DashboardContent() {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <AddIcon />
+            <IconButton color="inherit" href="/animals">
               <Typography
                 component="h1"
                 variant="h6"
@@ -138,11 +137,10 @@ function DashboardContent() {
                 noWrap
                 sx={{ flexGrow: 1 }}
               >
-                Room
+                Animal
               </Typography>
             </IconButton>
-            <IconButton color="inherit">
-              <AddIcon />
+            <IconButton color="inherit" href="cages">
               <Typography
                 component="h1"
                 variant="h6"
@@ -150,7 +148,7 @@ function DashboardContent() {
                 noWrap
                 sx={{ flexGrow: 1 }}
               >
-                User
+                Cages
               </Typography>
             </IconButton>
           </Toolbar>
@@ -236,7 +234,7 @@ function DashboardContent() {
                         display: "flex",
                         flexDirection: "column",
                         height: 40,
-                        color: "#b61b80",
+                        color: "#000000",
                         padding: 1,
                         marginY: 0.5,
                         backgroundColor: "#cde6d6",
@@ -249,7 +247,7 @@ function DashboardContent() {
                         display: "flex",
                         flexDirection: "column",
                         height: 40,
-                        color: "#b61b80",
+                        color: "#000000",
                         padding: 1,
                         marginY: 0.5,
                         backgroundColor: "#cde6d6",
@@ -262,10 +260,10 @@ function DashboardContent() {
                         display: "flex",
                         flexDirection: "column",
                         height: 40,
-                        color: "#b61b80",
+                        color: "#000000",
                         padding: 1,
                         marginY: 0.5,
-                        backgroundColor: "#cde6d6",
+                        backgroundColor: "#efa92e",
                       }}
                     >
                       <li>Genotyping</li>
@@ -275,10 +273,10 @@ function DashboardContent() {
                         display: "flex",
                         flexDirection: "column",
                         height: 40,
-                        color: "#b61b80",
+                        color: "#000000",
                         padding: 1,
                         marginY: 0.5,
-                        backgroundColor: "#f5f5dc",
+                        backgroundColor: "#ef3935",
                       }}
                     >
                       <li>Protocol Ending</li>

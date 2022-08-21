@@ -1,6 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
+import styles from "../styles/Home.module.css";
 
 function Chart(props) {
   const animalSeedData = [
@@ -68,25 +69,29 @@ function Chart(props) {
     "purple",
     "#ef3935",
   ];
-  // const keys = Object.keys(animalSeedData);
 
   const xValues = animalSeedData.map((data) => {
     return data.genotype;
   });
-  console.log(`THESE ARE MY ${keys}`);
-  const counts = {};
-  const sampleArray = ["a", "a", "b", "c"];
+  //maps data to find only genotypes
 
-  const yValues = sampleArray.forEach(function (x) {
+  const counts = {};
+  const genoCount = xValues.map(function (x) {
     counts[x] = (counts[x] || 0) + 1;
   });
+  //counts num of animals with each genotype
   console.log(counts);
 
+  const yValues = Object.values(counts);
+  //gets values of genptype count
+  const labels = Object.keys(counts);
+  //gets the genotypes for labels
+
   return (
-    <div>
+    <div className={styles.chartWrapper}>
       <Doughnut
         data={{
-          labels: [30, 40, 20, 10],
+          labels: labels,
           datasets: [
             {
               label: "Genotype Summary",

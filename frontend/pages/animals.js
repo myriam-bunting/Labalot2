@@ -1,6 +1,8 @@
 import * as React from "react";
 import DataTable from "../components/AnimalsTable";
 import Layout from "../components/Layout";
+import UpdateAnimal from "../components/UpdateAnimal";
+import Button from "@mui/material/Button";
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(false);
@@ -8,21 +10,12 @@ function DashboardContent() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
+  // =============== Update Animals through UpdateAnimals component
+  const [updateAnimal, setUpdateAnimal] = React.useState(false);
+  const [selectedRow, setSelectedRow] = React.useState(null);
+  const [handleUpdateSubmit, setHandleUpdateSubmit] = React.useState(0);
   // ================ Read : Fetch all animals
-  const [viewAnimals, setViewAnimals] = React.useState(true);
   const [animals, setAnimals] = React.useState([]);
-  const [viewCages, setViewCages] = React.useState(false);
-
-  const handleViewCages = () => {
-    setViewCages(!viewCages);
-    setViewAnimals(false);
-    console.log(`show me those cages baby`);
-  };
-  const handleViewAnimals = () => {
-    setViewAnimals(true);
-    console.log(`animals updated`);
-  };
 
   React.useEffect(() => {
     fetchAnimals();
@@ -43,9 +36,46 @@ function DashboardContent() {
     setAnimals(animalData);
     //passing cage data down in the state
   };
+  const handleSelectModelChange = ([e]) => {
+    setSelectedRow(e);
+  };
 
   return (
     <Layout>
+      {updateAnimal && selectedRow && (
+        <UpdateAnimal
+          animalData={animals.find(({ id }) => id === selectedRow)}
+          sx={{ zIndex: 100 }}
+          handleSubmit={() => {
+            setHandleUpdateSubmit(handleUpdateSubmit + 1);
+          }}
+        ></UpdateAnimal>
+      )}
+      <div>
+        <Button
+          onClick={() => {
+            console.log(animals, selectedRow);
+            setUpdateAnimal(true);
+          }}
+        >
+          EDIT CAGE
+        </Button>
+        <Button
+          onClick={() => {
+            if (confirm("are you sure")) {
+              handleDelete();
+            }
+          }}
+        >
+          DELETE CAGE
+        </Button>
+        {animals && (
+          <DataTable
+            handleSelectModelChange={handleSelectModelChange}
+            animalData={animals}
+          ></DataTable>
+        )}
+      </div>
       <DataTable animalData={animals} />
     </Layout>
   );

@@ -124,7 +124,7 @@
   margin-left: 0.5rem;
 }
 .iconsList {
-  padding: 4px;
+  padding: 8px;
 }
 
 @media (max-width: 600px) {
@@ -154,4 +154,9 @@
   padding: 0.5em;
   background-color: #cde6d6;
   font-weight: lighter;
+}
+.chartWrapper {
+  height: fit-content;
+  width: fit-content;
+  align-self: center;
 }

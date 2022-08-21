@@ -23,7 +23,7 @@ import Image from "next/image";
 import NewCage from "../components/NewCage";
 
 import NewAnimal from "../components/NewAnimal";
-import UpdateCage from "../components/UpdateCage";
+import UpdateCage from "./UpdateAnimal";
 
 function Copyright(props) {
   return (
@@ -34,7 +34,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="loaclhost:3000/">
         Labalot
       </Link>{" "}
       {new Date().getFullYear()}
@@ -140,39 +140,8 @@ function DashboardContent({ children }) {
             >
               <MenuIcon />
             </IconButton>
-            <Link href="/animals">
-              <IconButton>
-                <Typography
-                  component="h1"
-                  variant="h6"
-                  color="inherit"
-                  noWrap
-                  sx={{ flexGrow: 1 }}
-                >
-                  Animals
-                </Typography>
-              </IconButton>
-            </Link>
 
-            <Link href="/cages">
-              <IconButton>
-                <Typography
-                  component="h1"
-                  variant="h6"
-                  color="inherit"
-                  noWrap
-                  sx={{ flexGrow: 1 }}
-                >
-                  Cages
-                </Typography>
-              </IconButton>
-            </Link>
-            <IconButton
-              color="inherit"
-              onClick={toggleNewCageModal}
-              type="Cage"
-            >
-              <AddIcon />
+            <IconButton href="/animals">
               <Typography
                 component="h1"
                 variant="h6"
@@ -180,17 +149,11 @@ function DashboardContent({ children }) {
                 noWrap
                 sx={{ flexGrow: 1 }}
               >
-                Cage
+                Animals
               </Typography>
             </IconButton>
 
-            <IconButton
-              color="inherit"
-              onClick={toggleAnimalModal}
-              type="Animal"
-            >
-              <AddIcon />
-
+            <IconButton href="/cages">
               <Typography
                 component="h1"
                 variant="h6"
@@ -198,9 +161,52 @@ function DashboardContent({ children }) {
                 noWrap
                 sx={{ flexGrow: 1 }}
               >
-                Animal
+                Cages
               </Typography>
             </IconButton>
+            <Box
+              sx={{
+                width: 1 / 3,
+              }}
+            ></Box>
+            <Box>
+              <IconButton
+                color="inherit"
+                onClick={toggleNewCageModal}
+                type="Cage"
+              >
+                <AddIcon />
+                <Typography
+                  component="h1"
+                  variant="h6"
+                  color="inherit"
+                  noWrap
+                  sx={{
+                    flexGrow: 1,
+                  }}
+                >
+                  Cage
+                </Typography>
+              </IconButton>
+
+              <IconButton
+                color="inherit"
+                onClick={toggleAnimalModal}
+                type="Animal"
+              >
+                <AddIcon />
+
+                <Typography
+                  component="h1"
+                  variant="h6"
+                  color="inherit"
+                  noWrap
+                  sx={{ flexGrow: 1 }}
+                >
+                  Animal
+                </Typography>
+              </IconButton>
+            </Box>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
